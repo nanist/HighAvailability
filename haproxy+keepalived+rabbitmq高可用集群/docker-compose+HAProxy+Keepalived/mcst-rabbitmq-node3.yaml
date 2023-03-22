@@ -1,0 +1,26 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: mcst-rabbitmq
+    image: rabbitmq:3-management
+    restart: always
+    ports:
+      - 4369:4369
+      - 5671:5671
+      - 5672:5672
+      - 15672:15672
+      - 25672:25672
+    environment:
+      - TZ=Asia/Shanghai
+      - RABBITMQ_ERLANG_COOKIE=iweru238roseire
+      - RABBITMQ_DEFAULT_USER=mcst_admin
+      - RABBITMQ_DEFAULT_PASS=mcst_admin_123
+      - RABBITMQ_DEFAULT_VHOST=mcst_vhost
+    hostname: rabbitmq3
+    extra_hosts:
+      - rabbitmq1:10.10.11.79
+      - rabbitmq2:10.10.11.80
+      - rabbitmq3:10.10.11.81
+    volumes:
+      - ./rabbitmq-ram.sh:/home/rabbitmq-ram.sh
+      - ./data:/var/lib/rabbitmq
