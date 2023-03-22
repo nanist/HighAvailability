@@ -1,0 +1,1 @@
+rabbitmq，mysql，nacos，nginx集群。
